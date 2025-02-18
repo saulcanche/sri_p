@@ -6,6 +6,7 @@
     <td align="center"><strong>🌟 Saul Adrian Canche Marcial</strong></td>
     <td align="center"><strong>🚀 Yahir Ortiz Martínez</strong></td>
     <td align="center"><strong>🎯 Angel Gustavo Rosado Solis</strong></td>
+     <td align="center"><strong> Alejandro Cauich Ku</strong></td>
   </tr>
   <tr>
     <td align="center">
@@ -23,6 +24,11 @@
         <img src="https://github.com/angel.png" width="150">
       </a>
     </td>
+      <td align="center">
+      <a href="https://github.com/username">
+        <img src="https://github.com/Alrox97.png" width="150">
+      </a>
+    </td>
   </tr>
   <tr>
     <td align="center">
@@ -32,6 +38,9 @@
       <a href="https://github.com/username">@username</a>
     </td>
     <td align="center">
+      <a href="https://github.com/username">@username</a>
+    </td>
+      <td align="center">
       <a href="https://github.com/username">@username</a>
     </td>
   </tr>
