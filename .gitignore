@@ -1,0 +1,75 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.log
+*.sqlite3
+*.db
+*.coverage
+htmlcov/
+.tox/
+site/
+.mypy_cache/
+.pytest_cache/
+.pyre/
+.dmypy.json
+.pytype/
+
+# === Python environments ===
+.venv/
+venv/
+ENV/
+env/
+
+# === Django ===
+*.log
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+static_root/
+
+# === Flask ===
+instance/
+.webassets-cache
+
+# === Node.js / React / Vite ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+dist/
+build/
+.cache/
+.vite/
+*.tsbuildinfo
+
+# === Vite .env files ===
+.env
+.env.*
+*.env
+
+# === OS / Editor / Misc ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# === Temporary / Backup files ===
+*.swp*
