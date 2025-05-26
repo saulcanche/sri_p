@@ -686,28 +686,34 @@ class CodeforcesRecommendationEngine:
     def _format_recommendations(self, problems_df: pd.DataFrame, recommendation_type: str, user_rating: float = None) -> List[Dict]:
         """
         Formats a DataFrame of recommended problems into a list of dictionaries.
-        Includes an explanation for each recommendation.
+        Includes an explanation and URL for each recommendation.
         """
         formatted_recs = []
         for _, problem in problems_df.iterrows():
             # Ensure problem['tags'] is a list, even if it's missing or None
             tags = problem.get('tags', [])
             if not isinstance(tags, list):
-                tags = [] # Default to empty list if not a list
+                tags = []
+            
+            # Generate URL for the problem
+            contest_id = problem.get('contestId')
+            index = problem.get('index')
+            url = f"https://codeforces.com/problemset/problem/{contest_id}/{index}" if contest_id and index else None
             
             # Pass user_rating to _generate_explanation if available
             explanation = self._generate_explanation(problem.to_dict(), user_rating, recommendation_type)
             
             rec_dict = {
-                'contestId': problem.get('contestId'),
-                'index': problem.get('index'),
+                'contestId': contest_id,
+                'index': index,
                 'name': problem['name'],
                 'rating': problem['rating'],
                 'tags': tags,
                 'solvedCount': problem.get('solvedCount'),
                 'problem_id': problem.get('problem_id'),
                 'recommendation_type': recommendation_type,
-                'explanation': explanation
+                'explanation': explanation,
+                'url': url
             }
             # Add recommendation_score only if it exists (for hybrid, organic)
             if 'recommendation_score' in problem:
@@ -726,18 +732,21 @@ class CodeforcesRecommendationEngine:
             
             if not problem_row.empty:
                 problem = problem_row.iloc[0]
+                contest_id = problem.get('contestId')
+                index = problem.get('index')
+                
                 rec = {
                     'problem_id': problem_id,
                     'name': problem['name'],
-                    'contestId': problem.get('contestId'),
-                    'index': problem.get('index'),
+                    'contestId': contest_id,
+                    'index': index,
                     'rating': problem.get('rating'),
                     'tags': problem.get('tags', []),
                     'solvedCount': problem.get('solvedCount', 0),
                     'recommendation_score': round(score, 3),
-                    'url': f"https://codeforces.com/problemset/problem/{problem.get('contestId')}/{problem.get('index')}",
+                    'url': f"https://codeforces.com/problemset/problem/{contest_id}/{index}" if contest_id and index else None,
                     'recommendation_type': 'Hybrid',
-                    'explanation': self._generate_explanation(problem, 'Hybrid')
+                    'explanation': self._generate_explanation(problem, None, 'Hybrid')
                 }
                 recommendations.append(rec)
         
